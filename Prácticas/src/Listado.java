@@ -2,10 +2,7 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
@@ -147,4 +144,76 @@ public class Listado {
 
         return resultado;
     }
+
+    public void listarEmpleados(){
+        lista.entrySet().stream().forEach(System.out::println);
+    }
+
+    @Override
+    public String toString() {
+        String resultado = "";
+
+         return lista.entrySet().toString();
+
+        //return lista.entrySet().stream().forEach(elemento ->{ resultado = elemento.toString();});
+    }
+
+    public Map<Division, Map<Departamento, Long>> obtenerContadoresDivisionDepartamento(){
+        Map<Division, Map<Departamento, Long>> resultado = new HashMap<>();
+        Division[] divisiones = {Division.DIVID,Division.DIVHW,Division.DIVSER,Division.DIVSW};
+
+        List<Division> listaDivisiones = Arrays.asList(divisiones);
+
+        listaDivisiones.forEach(division ->{resultado.put(division,obtenerContadoresDepartamento(division));});
+
+        return resultado;
+
+
+    }
+
+    public Map<Departamento,Long> obtenerContadoresDepartamento(Division division){
+        Predicate<Empleado> condicion = empleado -> (empleado.getDivision() == division);
+        Stream<Empleado> empleados = lista.values().stream();
+
+        return empleados.filter(condicion).collect(Collectors.groupingBy(Empleado::getDepartamento,TreeMap::new,Collectors.counting()));
+    }
+
+    public List<Empleado> buscarEmpleadosSinDivision(){
+        Predicate<Empleado> condicion = empleado -> (empleado.getDivision() == Division.DIVNA);
+
+        return  lista.values().stream().filter(condicion).collect(Collectors.toList());
+    }
+
+    public List<Empleado> buscarEmpleadosConDivisionSinDepartamento(){
+        Predicate<Empleado> condicion = empleado -> ((empleado.getDivision() != Division.DIVNA)&&(empleado.getDepartamento()==Departamento.DEPNA));
+
+        return  lista.values().stream().filter(condicion).collect(Collectors.toList());
+    }
+
+    public List<Empleado> buscarEmpleadosSinDepartamento(Division division){
+        Predicate<Empleado> condicion = empleado -> ((empleado.getDivision() == division)&&(empleado.getDepartamento()==Departamento.DEPNA));
+
+        return  lista.values().stream().filter(condicion).collect(Collectors.toList());
+    }
+
+    public boolean hayDnisRepetidos(){
+        return false;
+    }
+
+    public Map<String,List<Empleado>> obtenerDnisRepetidos(){
+        return null;
+    }
+
+    public boolean hayCorreosRepetidos(){
+        return false;
+    }
+
+    public Map<String,List<Empleado>> obtenerCorreosRepetidos(){
+        
+    }
+
+
+
+
+
 }
