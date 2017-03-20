@@ -3,15 +3,17 @@
  */
 public class Empleado {
 
-    private String dni,nombre,apellidos,email,division,departamento;
+    private String dni,nombre,apellidos,email;
+    private Division division;
+    private Departamento departamento;
 
     public Empleado(){
         this.dni = "";
         this.nombre = "";
         this.apellidos = "";
         this.email = "";
-        this.division = "DIVNA";
-        this.departamento = "DEPNA";
+        this.division = Division.DIVNA;
+        this.departamento = Departamento.DEPNA;
 
     }
 
@@ -20,8 +22,8 @@ public class Empleado {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
-        this.division = "DIVNA";
-        this.departamento = "DEPNA";
+        this.division = Division.DIVNA;
+        this.departamento = Departamento.DEPNA;
 
     }
 
@@ -41,12 +43,20 @@ public class Empleado {
         return this.email;
     }
 
-    public String getDepartamento(){
+    public Departamento getDepartamento(){
         return this.departamento;
     }
 
-    public String getDivision(){
+    public Division getDivision(){
         return this.division;
+    }
+
+    public void setDivision(Division div){
+        this.division = div;
+    }
+
+    public void setDepartamento(Departamento dep){
+        this.departamento = dep;
     }
 
 }

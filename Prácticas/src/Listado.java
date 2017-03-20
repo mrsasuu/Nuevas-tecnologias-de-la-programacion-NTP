@@ -60,20 +60,91 @@ public class Listado {
 
     }
 
-    public void cargarArchivoAsignacionDepartamento(String nombreArchivo){
+    public void cargarArchivoAsignacionDepartamento(String nombreArchivo) throws IOException {
+        Stream<String> lineas = Files.lines(Paths.get(nombreArchivo));
+
+        //Sacaremos el titulo del departamento
+        String departamentoLine = lineas.findFirst().orElseGet(null);
+
+        //Saltamos las 2 primeras lineas
+        Files.lines(Paths.get(nombreArchivo)).skip(2).forEach(linea -> procesarAsignacionDivision(linea,departamentoLine));
 
     }
 
     private void procesarAsignacionDivision(String dni, String cadDivision){
-        Predicate<Division> condicion = division ->{ division.name().equals(cadDivision);};
+        /*Predicate<Division> condicion = division ->{ division.name().equals(cadDivision);};
 
-        Division divisionRes = Arrays.stream(Division.values()).filter(condicion).findFirst().get();
+        Division divisionRes = Arrays.stream(Division.values()).filter(condicion).findFirst().get();*/
+
+        //Predicate<Empleado> condicion = empleado -> (empleado.getDNI().compareTo(dni)==0);
+
+        //lista.stream().filter(condicion).findFirst().get();
+
+        //lista.entrySet().stream().filter(condicion).findAny().get().
+
+        lista.get(dni).setDivision(equivalenteDivision(cadDivision));
+
+
+
+    }
+
+    private void procesarAsignacionDepartamento(String dni, String cadDepartamento){
+        /*Predicate<Division> condicion = division ->{ division.name().equals(cadDivision);};
+
+        Division divisionRes = Arrays.stream(Division.values()).filter(condicion).findFirst().get();*/
+
+        //Predicate<Empleado> condicion = empleado -> (empleado.getDNI().compareTo(dni)==0);
+
+        //lista.stream().filter(condicion).findFirst().get();
+
+        //lista.entrySet().stream().filter(condicion).findAny().get().
+
+        lista.get(dni).setDepartamento(equivalenteDepartamento(cadDepartamento));
+
+
+
     }
 
     private Division equivalenteDivision(String nombreDivision){
+        Division resultado = Division.DIVNA;
         switch (nombreDivision){
             case "DIVNA":
+                resultado = Division.DIVNA;
+                break;
+            case "DIVSW":
+                resultado = Division.DIVSW;
+                break;
+            case "DIVHW":
+                resultado = Division.DIVHW;
+                break;
+            case "DIVID":
+                resultado = Division.DIVID;
+                break;
+            case "DIVSER":
+                resultado = Division.DIVSER;
                 break;
         }
+
+        return resultado;
+    }
+
+    private Departamento equivalenteDepartamento(String nombreDepartamento){
+        Departamento resultado = Departamento.DEPNA;
+        switch (nombreDepartamento){
+            case "DEPNA":
+                resultado = Departamento.DEPNA;
+                break;
+            case "DEPSA":
+                resultado = Departamento.DEPSA;
+                break;
+            case "DEPSB":
+                resultado = Departamento.DEPSB;
+                break;
+            case "DEPSM":
+                resultado = Departamento.DEPSM;
+                break;
+        }
+
+        return resultado;
     }
 }
