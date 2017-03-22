@@ -1,3 +1,5 @@
+import com.sun.java.swing.plaf.windows.WindowsTreeUI;
+
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.nio.file.Files;
@@ -6,6 +8,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -64,7 +67,7 @@ public class Listado {
         String departamentoLine = lineas.findFirst().orElseGet(null);
 
         //Saltamos las 2 primeras lineas
-        Files.lines(Paths.get(nombreArchivo)).skip(2).forEach(linea -> procesarAsignacionDivision(linea,departamentoLine));
+        Files.lines(Paths.get(nombreArchivo)).skip(2).forEach(linea -> procesarAsignacionDepartamento(linea,departamentoLine));
 
     }
 
@@ -80,6 +83,8 @@ public class Listado {
         //lista.entrySet().stream().filter(condicion).findAny().get().
 
         lista.get(dni).setDivision(equivalenteDivision(cadDivision));
+
+        //System.out.println(cadDivision);
 
 
 
@@ -153,6 +158,7 @@ public class Listado {
     public String toString() {
         String resultado = "";
 
+        //System.out.println( lista.entrySet().toString());
          return lista.entrySet().toString();
 
         //return lista.entrySet().stream().forEach(elemento ->{ resultado = elemento.toString();});
@@ -160,7 +166,7 @@ public class Listado {
 
     public Map<Division, Map<Departamento, Long>> obtenerContadoresDivisionDepartamento(){
         Map<Division, Map<Departamento, Long>> resultado = new HashMap<>();
-        Division[] divisiones = {Division.DIVID,Division.DIVHW,Division.DIVSER,Division.DIVSW};
+        Division[] divisiones = {Division.DIVID,Division.DIVHW,Division.DIVSER,Division.DIVSW,Division.DIVNA};
 
         List<Division> listaDivisiones = Arrays.asList(divisiones);
 
@@ -197,23 +203,60 @@ public class Listado {
     }
 
     public boolean hayDnisRepetidos(){
-        return false;
+        Stream<Empleado> empleados = lista.values().stream();
+
+
+        TreeMap<String, Long> resultado = empleados.collect(Collectors.groupingBy(Empleado::getDNI, TreeMap::new, Collectors.counting()));
+
+        Predicate<Map.Entry<String,Long>> condicion = entry -> (entry.getValue()>1);
+
+        //ap.Entry<String, Long> stringLongEntry = resultado.entrySet().stream().filter(condicion).findAny().get();
+
+        List<Map.Entry<String, Long>> repetidos = resultado.entrySet().stream().filter(condicion).collect(Collectors.toList());
+
+        if(repetidos.size()>0)
+            return true;
+        else
+            return false;
     }
 
     public Map<String,List<Empleado>> obtenerDnisRepetidos(){
+
+        Stream<Empleado> empleados = lista.values().stream();
+
+        TreeMap<String, List<Empleado>> resultado = empleados.collect(Collectors.groupingBy(Empleado::getDNI, TreeMap::new, Collectors.toList()));
+
+
+        TreeMap<Integer, List<List<Empleado>>> collect = resultado.values().stream().filter(listaEmpleados -> listaEmpleados.size() > 1).collect(Collectors.groupingBy(empleado -> empleado.size(),TreeMap::new, Collectors.toList()));
+
+
         return null;
     }
 
     public boolean hayCorreosRepetidos(){
-        return false;
+        Stream<Empleado> empleados = lista.values().stream();
+
+
+        TreeMap<String, Long> resultado = empleados.collect(Collectors.groupingBy(Empleado::getEmail, TreeMap::new, Collectors.counting()));
+
+        Predicate<Map.Entry<String,Long>> condicion = entry -> (entry.getValue()>1);
+
+        //ap.Entry<String, Long> stringLongEntry = resultado.entrySet().stream().filter(condicion).findAny().get();
+
+        List<Map.Entry<String, Long>> repetidos = resultado.entrySet().stream().filter(condicion).collect(Collectors.toList());
+
+        if(repetidos.size()>0)
+            return true;
+        else
+            return false;
     }
 
     public Map<String,List<Empleado>> obtenerCorreosRepetidos(){
-        
+        return null;
     }
 
 
-
-
-
+    public int obtenerNumeroEmpleados() {
+        return lista.size();
+    }
 }

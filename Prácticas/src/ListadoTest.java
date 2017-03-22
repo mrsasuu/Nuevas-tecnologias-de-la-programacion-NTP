@@ -3,7 +3,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import listado.Listado;
+
 
 import java.io.IOException;
 import java.util.Map;
@@ -54,7 +54,7 @@ public class ListadoTest {
      * datos de 100 empleados)
      * @throws Exception
      */
-    @Test
+    @org.junit.Test
     public void testConstruccionListado() throws Exception{
         assert(listado.obtenerNumeroEmpleados() == 1000);
     }
@@ -69,6 +69,10 @@ public class ListadoTest {
     public void testCargarArchivosAsignacion() throws Exception {
         // Se obtienen los empleados no asignados a cada asignatura
         // y se comprueba su valor
+        /*
+        System.out.println(listado.buscarEmpleadosSinDepartamento(Division.DIVNA).size());
+        System.out.println(listado.buscarEmpleadosSinDepartamento(Division.DIVID).size());
+        */
         assert(listado.buscarEmpleadosSinDepartamento(Division.DIVNA).size() == 49);
         assert(listado.buscarEmpleadosSinDepartamento(Division.DIVID).size() == 54);
         assert(listado.buscarEmpleadosSinDepartamento(Division.DIVSW).size() == 42);
@@ -82,16 +86,60 @@ public class ListadoTest {
      */
     @Test
     public void testObtenerContadoresDepartamentos(){
-        // Se obtienen los contadores para la asignatura ES
-        Map<Departamento, Long> contadores = listado.obtenerContadoresDepartamento(
-                Division.DIVSER);
-        contadores.keySet().stream().forEach(key -> System.out.println(
-                key.toString() + "- " + contadores.get(key)));
+
         // Se comprueba que los valores son DEPNA = 49, DEPSB = 48, DEPSM = 53, DEPSA = 41
-        Long contadoresReferencia[]={49L,48L,53L,41L};
+        Long contadoresReferenciaSER[]={49L,48L,53L,41L};
+        Long contadoresReferenciaNA[]={49L,53L,53L,58L};
+        Long contadoresReferenciaSW[]={42L,52L,45L,53L};
+        Long contadoresReferenciaHW[]={44L,43L,67L,62L};
+        Long contadoresReferenciaID[]={54L,49L,42L,43L};
+
         Long contadoresCalculados[]=new Long[4];
-        assertArrayEquals(contadores.values().toArray(contadoresCalculados),
-                          contadoresReferencia);
+
+        // Se obtienen los contadores para la asignatura ES
+        Map<Departamento, Long> contadoresSER = listado.obtenerContadoresDepartamento(
+                Division.DIVSER);
+        System.out.println(Division.DIVSER );
+        contadoresSER.keySet().stream().forEach(key -> System.out.println(
+                key.toString() + "- " + contadoresSER.get(key)));
+        assertArrayEquals(contadoresSER.values().toArray(contadoresCalculados),
+                          contadoresReferenciaSER);
+
+        System.out.println("\n"+Division.DIVNA);
+        Map<Departamento, Long> contadoresNA = listado.obtenerContadoresDepartamento(
+                Division.DIVNA);
+        contadoresNA.keySet().stream().forEach(key -> System.out.println(
+                key.toString() + "- " + contadoresNA.get(key)));
+        // Se comprueba que los valores son DEPNA = 49, DEPSB = 48, DEPSM = 53, DEPSA = 41
+        assertArrayEquals(contadoresNA.values().toArray(contadoresCalculados),
+                contadoresReferenciaNA);
+
+        System.out.println("\n"+Division.DIVID);
+        Map<Departamento, Long> contadoresID = listado.obtenerContadoresDepartamento(
+                Division.DIVID);
+        contadoresID.keySet().stream().forEach(key -> System.out.println(
+                key.toString() + "- " + contadoresID.get(key)));
+        // Se comprueba que los valores son DEPNA = 49, DEPSB = 48, DEPSM = 53, DEPSA = 41
+        assertArrayEquals(contadoresID.values().toArray(contadoresCalculados),
+                contadoresReferenciaID);
+
+        System.out.println("\n"+Division.DIVSW);
+        Map<Departamento, Long> contadoresSW = listado.obtenerContadoresDepartamento(
+                Division.DIVSW);
+        contadoresID.keySet().stream().forEach(key -> System.out.println(
+                key.toString() + "- " + contadoresSW.get(key)));
+        // Se comprueba que los valores son DEPNA = 49, DEPSB = 48, DEPSM = 53, DEPSA = 41
+        assertArrayEquals(contadoresSW.values().toArray(contadoresCalculados),
+                contadoresReferenciaSW);
+
+        System.out.println("\n"+Division.DIVHW);
+        Map<Departamento, Long> contadoresHW = listado.obtenerContadoresDepartamento(
+                Division.DIVHW);
+        contadoresID.keySet().stream().forEach(key -> System.out.println(
+                key.toString() + "- " + contadoresHW.get(key)));
+        // Se comprueba que los valores son DEPNA = 49, DEPSB = 48, DEPSM = 53, DEPSA = 41
+        assertArrayEquals(contadoresHW.values().toArray(contadoresCalculados),
+                contadoresReferenciaHW);
     }
 
     /**
@@ -106,11 +154,13 @@ public class ListadoTest {
                 listado.obtenerContadoresDivisionDepartamento();
 
         // Se comprueban los valores obtenenidos con los valores por referencia
-        Long contadoresReferenciaNA[]={49L,53L,53L,58L};
-        Long contadoresReferenciaID[]={54L,49L,42L,43L};
-        Long contadoresReferenciaHW[]={44L,43L,67L,62L};
-        Long contadoresReferenciaSW[]={42L,52L,45L,53L};
         Long contadoresReferenciaSER[]={49L,48L,53L,41L};
+        Long contadoresReferenciaNA[]={49L,53L,53L,58L};
+        Long contadoresReferenciaSW[]={42L,52L,45L,53L};
+        Long contadoresReferenciaHW[]={44L,43L,67L,62L};
+        Long contadoresReferenciaID[]={54L,49L,42L,43L};
+
+
 
         // Se comprueban los resultado del metodo con los de referencia
         Long contadoresCalculados[]=new Long[4];
@@ -126,6 +176,79 @@ public class ListadoTest {
                 toArray(contadoresCalculados),contadoresReferenciaSER);
     }
 
-    // Aqui habria que completar los casos de prueba para el resto de
-    // metodos a ofrecer por la clase Listado
+    /**
+     * Prueba del procedimiento general de obtencion de empleados sin departamento
+     * @throws Exception
+     */
+    @Test
+    public void testBuscarEmpleadosSinDepartamento()throws Exception {
+
+        assertEquals(listado.buscarEmpleadosSinDepartamento(Division.DIVNA).size(),49);
+        assertEquals(listado.buscarEmpleadosSinDepartamento(Division.DIVSER).size(),49);
+        assertEquals(listado.buscarEmpleadosSinDepartamento(Division.DIVID).size(),54);
+        assertEquals(listado.buscarEmpleadosSinDepartamento(Division.DIVSW).size(),42);
+        assertEquals(listado.buscarEmpleadosSinDepartamento(Division.DIVHW).size(),44);
+
+    }
+
+    /**
+     * Prueba del procedimiento general de obtencion de empleados con division pero sin departamento
+     * @throws Exception
+     */
+    @Test
+    public void testbuscarEmpleadosConDivisionSinDepartamento()throws Exception {
+
+        assertEquals(listado.buscarEmpleadosConDivisionSinDepartamento().size(),189);
+
+    }
+
+    /**
+     * Prueba del procedimiento general de obtencion de empleados sin division
+     * @throws Exception
+     */
+    @Test
+    public void testbuscarEmpleadosSinDivision()throws Exception {
+
+        assertEquals(listado.buscarEmpleadosSinDivision().size(),213);
+
+    }
+
+    /**
+     * Prueba del procedimiento toString
+     * @throws Exception
+     */
+    @Test
+    public void testToString() throws Exception{
+        System.out.println(listado.toString());
+    }
+
+    /**
+     * Prueba del procedimiento listar empleados
+     * @throws Exception
+     */
+    @Test
+    public void testListarEmpleados() throws Exception{
+        listado.listarEmpleados();
+    }
+
+    /**
+     * Prueba del procedimiento hayDniRepetidos
+     * @throws Exception
+     */
+    @Test
+    public void testHayDniRepetidos() throws Exception{
+        assert(!listado.hayDnisRepetidos());
+    }
+
+    /**
+     * Prueba del procedimiento hayCorreosRepetidos
+     * @throws Exception
+     */
+    @Test
+    public void testHayCorreosRepetidos() throws Exception{
+        assert(listado.hayCorreosRepetidos());
+    }
+
+
+
 }
