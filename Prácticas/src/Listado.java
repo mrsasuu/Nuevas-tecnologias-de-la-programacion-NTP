@@ -252,7 +252,20 @@ public class Listado {
     }
 
     public Map<String,List<Empleado>> obtenerCorreosRepetidos(){
-        return null;
+        Stream<Empleado> empleados = lista.values().stream();
+
+
+
+        TreeMap<String, List<Empleado>> resultado = empleados.collect(Collectors.groupingBy(Empleado::getEmail, TreeMap::new, Collectors.toList()));
+
+        Predicate<Map.Entry<String,List<Empleado>>> condicion = entry -> (entry.getValue().size()>1);
+
+        //ap.Entry<String, Long> stringLongEntry = resultado.entrySet().stream().filter(condicion).findAny().get();
+
+        resultado.entrySet().stream().filter(condicion).collect(Empleado::getDNI,TreeMap::new,Collectors.toMap(Function.identity(),entry ->));
+
+        //repetidos.stream().forEach();
+
     }
 
 
