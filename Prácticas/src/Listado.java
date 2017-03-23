@@ -241,8 +241,6 @@ public class Listado {
 
         Predicate<Map.Entry<String,Long>> condicion = entry -> (entry.getValue()>1);
 
-        //ap.Entry<String, Long> stringLongEntry = resultado.entrySet().stream().filter(condicion).findAny().get();
-
         List<Map.Entry<String, Long>> repetidos = resultado.entrySet().stream().filter(condicion).collect(Collectors.toList());
 
         if(repetidos.size()>0)
@@ -260,11 +258,9 @@ public class Listado {
 
         Predicate<Map.Entry<String,List<Empleado>>> condicion = entry -> (entry.getValue().size()>1);
 
-        //ap.Entry<String, Long> stringLongEntry = resultado.entrySet().stream().filter(condicion).findAny().get();
 
-        resultado.entrySet().stream().filter(condicion).collect(Empleado::getDNI,TreeMap::new,Collectors.toMap(Function.identity(),entry ->));
+        return resultado.entrySet().stream().filter(condicion).map(key -> key.getValue()).flatMap(empleado -> empleado.stream()).collect(Collectors.groupingBy(Empleado::getDNI));
 
-        //repetidos.stream().forEach();
 
     }
 

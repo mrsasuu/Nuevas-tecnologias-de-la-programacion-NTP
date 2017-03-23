@@ -237,7 +237,7 @@ public class ListadoTest {
      */
     @Test
     public void testHayDniRepetidos() throws Exception{
-        assert(!listado.hayDnisRepetidos());
+        assertFalse(listado.hayDnisRepetidos());
     }
 
     /**
