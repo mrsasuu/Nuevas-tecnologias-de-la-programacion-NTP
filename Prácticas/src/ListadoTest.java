@@ -6,7 +6,10 @@ import static org.junit.Assert.*;
 
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Práctica 1 NTP
@@ -236,7 +239,7 @@ public class ListadoTest {
      * @throws Exception
      */
     @Test
-    public void testHayDniRepetidos() throws Exception{
+    public void testHayDnisRepetidos() throws Exception{
         assertFalse(listado.hayDnisRepetidos());
     }
 
@@ -247,6 +250,34 @@ public class ListadoTest {
     @Test
     public void testHayCorreosRepetidos() throws Exception{
         assert(listado.hayCorreosRepetidos());
+    }
+
+    /**
+     * Prueba del procedimiento ObtenerCorreosRepetidos
+     * @throws Exception
+     */
+    @Test
+    public void testObtenerCorreosRepetidos() throws Exception{
+        //Comprobamos el numero de emails repetidos; que en este caso son 8.
+        System.out.println("Numero de correos repetidos: " + listado.obtenerCorreosRepetidos().entrySet().stream().map(key -> key.getValue()).flatMap(empleado -> empleado.stream()).collect(Collectors.groupingBy(Empleado::getEmail)).size());
+
+        assertEquals(listado.obtenerCorreosRepetidos().entrySet().stream().map(key -> key.getValue()).flatMap(empleado -> empleado.stream()).collect(Collectors.groupingBy(Empleado::getEmail)).size(),8);
+        //O bien calculamos el numero de empleados que repirten el email y lo comparamos.
+        assertEquals(listado.obtenerCorreosRepetidos().size(),17);
+
+    }
+
+    /**
+     * Prueba del procedimiento ObtenerDniRepetidos
+     * @throws Exception
+     */
+    @Test
+    public void testObtenerDnisRepetidos() throws Exception{
+        //Comprobamos el numero de DNIs repetidos; que en este caso son 0.
+        System.out.println("Numero de DNIs repetidos: " + listado.obtenerDnisRepetidos().size());
+
+        assertEquals(listado.obtenerDnisRepetidos().size(),0);
+
     }
 
 

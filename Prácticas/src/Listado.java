@@ -224,13 +224,15 @@ public class Listado {
 
         Stream<Empleado> empleados = lista.values().stream();
 
+
+
         TreeMap<String, List<Empleado>> resultado = empleados.collect(Collectors.groupingBy(Empleado::getDNI, TreeMap::new, Collectors.toList()));
 
+        Predicate<Map.Entry<String,List<Empleado>>> condicion = entry -> (entry.getValue().size()>1);
 
-        TreeMap<Integer, List<List<Empleado>>> collect = resultado.values().stream().filter(listaEmpleados -> listaEmpleados.size() > 1).collect(Collectors.groupingBy(empleado -> empleado.size(),TreeMap::new, Collectors.toList()));
 
+        return resultado.entrySet().stream().filter(condicion).map(key -> key.getValue()).flatMap(empleado -> empleado.stream()).collect(Collectors.groupingBy(Empleado::getDNI));
 
-        return null;
     }
 
     public boolean hayCorreosRepetidos(){
