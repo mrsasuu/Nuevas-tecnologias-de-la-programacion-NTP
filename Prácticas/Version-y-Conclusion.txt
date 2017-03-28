@@ -1,0 +1,13 @@
+El entorno de desarrollo escogido ha sido IntelliJ IDEA 2016.3.5
+Para el desarrollo de los test se ha incluido la libreria de Junit 5.
+
+Conclusión de la práctica:
+
+Sinceramente me ha parecido una práctica bastante asequible, lo que se agradece bastante entre las asignaturas que tenemos ahora en este cuatrimestre más el TFG,
+así que empezando por ahí le doy puntos positivos, al igual que las explicaciones en clase han sido muy muy alentadoras y constructivas para que en el momento
+de tener que desarrollar la práctica se haya hecho más amena y satisfactoria. Entrando un poco más en detalle sobre los conocimientos de la misma, me gustaría
+destacar que aunque ya se partía de conocimientos previos sobre Java, el hecho de aprender estas técnicas de programación han resultado bastasnte novedosas y
+a la vez bastante útiles para el manejo de colecciones de datos muy amplias donde aplicando dichas técnicas se consigue de una manera más eficiente y más simple
+unos resultados iguales a una implementación imperativa.
+
+Así que para concluir me parece que ha sido una práctica muy bien estructurada y con un fin más que alcanzado.
