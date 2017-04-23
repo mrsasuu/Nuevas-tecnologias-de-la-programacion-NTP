@@ -1,3 +1,4 @@
+import scala.annotation.tailrec
 import scala.collection.mutable.ArrayBuffer
 import scala.reflect.ClassTag
 
@@ -39,10 +40,13 @@ object Main {
     if(!chequearBalance(listaIncorrecta))
       println("La lista 2 es incorrecta")
 
+    val monedas = List(1,2,3)
+    val dinero = 6
+
+    println("Hay " + contarCambiosPosibles(dinero,monedas) + " maneras de devolver " + dinero)
+
     var array1:Array[Int] = Array(0, 1, 5, 20, 35, 57, 98, 123, 215)
     println(ordenado(array1, (x:Int,y:Int) => (x < y)))
-
-    import scala.collection.mutable.ArrayBuffer
 
     println(busqueda(array1,20,(x:Int,y:Int) => (x > y),(x:Int,y:Int) => (x < y)))
 
@@ -54,9 +58,8 @@ object Main {
     * @param columna número entero que indicará que columna se desea calcular.
     * @param fila número entero que indicará que fila se desea calcular.
     * @return el valor correspondiente a la fila y la columna de la pirámide de Pascal
+    * @author Antonio Javier Benítez Guijarro.
     */
-
-  //@annotation.tailrec
   def calcularValorTrianguloPascal(columna: Int, fila: Int): Int = {
     /**
       * Si nos encontramos en los extremos de la fila o en la 1 columna nos encontraremos en el caso base, y por tanto
@@ -75,6 +78,7 @@ object Main {
     *
     * @param cadena cadena a analizar
     * @return valor booleano con el resultado de la operacion
+    * @author Antonio Javier Benítez Guijarro.
     */
   def chequearBalance(cadena: List[Char]): Boolean = {
 
@@ -86,6 +90,7 @@ object Main {
       *                  estan mal formados
       * @return devuelve 0 cuando la cadena no tiene mas parentesis, devuelve 1 si el parentesis es ( y devuelve -1 si es )
       *         si no queda ningun parentesis y solo otros caracteres se devuelve 0
+      * @author Antonio Javier Benítez Guijarro.
       */
     @annotation.tailrec
      def comprobarParentesis(cadena: List[Char],indiceFun : Int): Int ={
@@ -149,15 +154,50 @@ object Main {
     * Ejercicio 3: funcion para determinar las posibles formas de devolver el
     * cambio de una determinada cantidad con un conjunto de monedas
     *
-    * @param cantidad
-    * @param monedas
-    * @return contador de numero de vueltas posibles
+    * @param cantidad valor al que se le desea calcular el número de combinaciones de cambio posibles.
+    * @param monedas tipo de monedas con las que se quiere dar el cambio
+    * @return número de formas posibles de devolver el cambio del valor cantidad según las cantidades de la lista monedas.
     * @author Antonio Javier Benítez Guijarro.
     */
-  /*
   def contarCambiosPosibles(cantidad: Int, monedas: List[Int]): Int = {
-     // A rellenar
-  }*/
+    /**
+      * Función recursiva auxiliar que es el núcleo de la función contarCambiosPosibles.
+      * Esta función va llamandose a si misma 2 veces cada vez, recogiendo las combinaciones posibles de cambio con las
+      * monedas de valor superior cambios(cantidad, monedas.tail) y las combinaciones habiendo usado la moneda a la cabeza de la lista.
+      *
+      * @param cantidad  valor al que se le desea calcular el número de combinaciones de cambio posibles.
+      * @param monedas tipo de monedas con las que se quiere dar el cambio
+      * @return Devuelve si es posible devolverse el cambio con esa configuración. 1 si el cambio que se ha ido calculando
+      *         suma la cantidad modificada.
+      *
+      */
+    def cambios(cantidad: Int, monedas: List[Int]): Int = {
+      /**
+        * Si la cantidad es 0 quiere decir que se ha podido dar el cambio con las llamadas anteriores, por ello se devuelve 1 indicando
+        * que ha habido una forma posible de calcularlo.
+        *
+        * Si nos hemos quedado sin monedas y aún falta dinero por cambiar quiere decir que con esta configuración tampoco es posible devolverse todo el cambio. Por loq ue devolveremos 0
+        *
+        * Si cantidad < 0 quiere decir que nos hemos pasado con el cambio y por lo tanto esa configuración no es válida. Por lo que devolveremos 0.
+        *
+        * Y por último si no se cumple ninguna de las condiciones anteriores llamaremos de nuevo a la función con una lista más reducida de monedas ambios(cantidad, monedas.tail) y
+        * otra vez a función usando la primera moneda de la lista.
+        *
+        *
+        */
+      if(cantidad == 0)
+        1
+      else if(cantidad>=1 && monedas.length == 0 )
+        0
+      else if(cantidad < 0 )
+        0
+      else
+        cambios(cantidad, monedas.tail) + cambios(cantidad - monedas.head, monedas)
+    }
+
+    cambios(cantidad, monedas)
+  }
+
 
   def ordenado[A](array:Array[A], comparar:(A,A) => Boolean) : Boolean = {
     @annotation.tailrec
