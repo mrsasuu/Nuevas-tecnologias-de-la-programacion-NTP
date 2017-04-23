@@ -44,7 +44,7 @@ object Main {
 
     import scala.collection.mutable.ArrayBuffer
 
-    println(busqueda(array1,20,(x:Int,y:Int) => (x > y)))
+    println(busqueda(array1,20,(x:Int,y:Int) => (x > y),(x:Int,y:Int) => (x < y)))
 
   }
 
@@ -155,17 +155,18 @@ object Main {
     * @param array Vector en el que se realizará la busqueda binaria.
     * @param elemento Valor que se buscará dentro del vector.
     * @param mayor Función de criterio que indicará cuando el primer elemento X es mayor que el segundo elemento Y.
+    * @param comparar Función de criterio que servirá para comprobar si están ordenados los elementos.
     * @tparam A Tipo de los elementos del vector.
     * @return -1 cuando el elemento no está en el vector. -2 si el vector no está ordenado ascendentemente.
     *         En cualquier otro caso devolverá el indice en la posición en la que se encuentre el elemento.
     * @author Antonio Javier Benítez Guijarro.
     */
-  def busqueda[A](array:Array[A], elemento : A, mayor:(A,A) => Boolean) : Int = {
+  def busqueda[A](array:Array[A], elemento : A, mayor:(A,A) => Boolean, comparar:(A,A) => Boolean) : Int = {
 
     /**
       * Si el vector no está ordenado devolveremos -2.
       */
-    if(!ordenado(array, mayor))
+    if(!ordenado(array, comparar))
       return -2
 
     /**
