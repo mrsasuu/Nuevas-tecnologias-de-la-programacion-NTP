@@ -39,13 +39,13 @@ object Main {
     if(!chequearBalance(listaIncorrecta))
       println("La lista 2 es incorrecta")
 
-    var array1:Array[Int] = Array(1, 5, 20, 35, 57, 98, 123, 215)
+    var array1:Array[Int] = Array(0, 1, 5, 20, 35, 57, 98, 123, 215)
     println(ordenado(array1, (x:Int,y:Int) => (x < y)))
 
     import scala.collection.mutable.ArrayBuffer
 
-    var array2:ArrayBuffer[Int] = ArrayBuffer(1,4, 5, 20, 35, 57, 98, 123, 215)
-    println(busqueda(array2,1,(x:Int,y:Int) => (x > y)))
+    println(busqueda(array1,20,(x:Int,y:Int) => (x > y)))
+
   }
 
   /**
@@ -126,6 +126,7 @@ object Main {
     * @param cantidad
     * @param monedas
     * @return contador de numero de vueltas posibles
+    * @author Antonio Javier Benítez Guijarro.
     */
   /*
   def contarCambiosPosibles(cantidad: Int, monedas: List[Int]): Int = {
@@ -146,107 +147,82 @@ object Main {
 
     iterar(0)
   }
-  import scala.collection.mutable.ArrayBuffer
-  def busqueda[A:ClassTag](array:ArrayBuffer[A], elemento : A, mayor:(A,A) => Boolean) : Int = {
 
+  /**
+    *
+    * Función para buscar un elemento de un tipo A en un vector de valores del mismo tipo que el elemento que buscamos.
+    *
+    * @param array Vector en el que se realizará la busqueda binaria.
+    * @param elemento Valor que se buscará dentro del vector.
+    * @param mayor Función de criterio que indicará cuando el primer elemento X es mayor que el segundo elemento Y.
+    * @tparam A Tipo de los elementos del vector.
+    * @return -1 cuando el elemento no está en el vector. -2 si el vector no está ordenado ascendentemente.
+    *         En cualquier otro caso devolverá el indice en la posición en la que se encuentre el elemento.
+    * @author Antonio Javier Benítez Guijarro.
+    */
+  def busqueda[A](array:Array[A], elemento : A, mayor:(A,A) => Boolean) : Int = {
+
+    /**
+      * Si el vector no está ordenado devolveremos -2.
+      */
+    if(!ordenado(array, mayor))
+      return -2
+
+    /**
+      * Función recursiva. Es el núcleo de la funcion busqueda.
+      *
+      * @param array2 Vector en el que se realizará la busqueda binaria.
+      * @param indiceInf Parámetro que indica el inicio del vector por el que se empezará a buscar. Por defecto para empezar será el 0.
+      * @param indiceSup Parámetro que indica el final del vector por el que se terminará de buscar. Por defecto inicialmente será el final del vector.
+      * @return La función devolverá -1 si el elemento no está en el vector y en cualquier otro caso devolverá el indice donde se encuentra el elemento.
+      * @author Antonio Javier Benítez Guijarro.
+      */
     @annotation.tailrec
-    def Buscar(array2:ArrayBuffer[A],indice :Int) : Int = {
-      if(array2.length == 0 )
-        return -1
+    def Buscar(array2:Array[A],indiceInf:Int, indiceSup:Int) : Int = {
 
-      var tam = 0
-      if(array2.length == 2)
-      {
-        tam = (array2.length/2)-1
-      }
-      else
-        tam = array2.length/2
+      /**
+        * Calcularemos la posición mitad de nuestro vector a partir de los indices inferior y superior.
+        */
+      var mitad : Int = (indiceInf+indiceSup)/2
 
-      var arrayRes:ArrayBuffer[A] = new ArrayBuffer[A](tam)
-      var mitad : A = array2(tam)
-
-
-
-      println("Elemento es: " + elemento + " y mitad vale: " + mitad)
-
-      if(mayor(elemento,mitad) && array2.length == 1)
-        return -1
-
-      if(mitad == elemento)
-        (indice/2)
-      else if (mayor(elemento,mitad)){
-        for (i <- ((array2.length)/2) until  (array2.length)){
-          arrayRes += array2(i)
-
-        }
-
-        Buscar(arrayRes,indice + tam)
+      /**
+        * Si el valor que hay en la posición mitad del vector (según los índices inferior y superior en este momento) es igual al valor del elemento que buscamos
+        * entonces habremos encontrado nuestro elemento y deberemos retornar la posición de dicho elemento.
+        *
+        * Si por el contrario no es igual, comprobaremos si el valor del elemento que buscamos es mayor al de la posición mitad del vector según
+        * el criterio de la condición mayor(X,Y). Si el valor del elemento que buscamos es mayor entonces volveremos a llamar a la función
+        * buscar con los índices actualizados Buscar(array2,mitad+1,indiceSup)
+        *
+        * Si por el contrario el valor del elemento que buscamos no es mayor, volveremos a llamar a la función buscar con los índices actualizados Buscar(array2,indiceInf,mitad).
+        */
+      if(array2(mitad) == elemento)
+        mitad
+      else if (mayor(elemento,array2(mitad))){
+        /**
+          * Si los índices se sobrepasan quiere decir que el elemento que buscamos no se encuentra dentro del vector, así que retornamos -1.
+          */
+        if(indiceInf >= indiceSup  )
+          return -1
+        Buscar(array2,mitad+1,indiceSup)
       }else{
-        for (i <- 0 until ((array2.length/2))){
-
-          arrayRes += array2(i)
-
-        }
-        Buscar(arrayRes,indice - tam)
+        /**
+          * Si los índices se sobrepasan quiere decir que el elemento que buscamos no se encuentra dentro del vector, así que retornamos -1.
+          */
+        if(indiceInf >= indiceSup  )
+          return -1
+        Buscar(array2,indiceInf,mitad)
       }
-
-
     }
 
-    Buscar(array,array.length)
+    /**
+      * Haremos la primera llamada con los índices en el principio del vector y su final.
+      */
+    Buscar(array,0,array.length-1)
   }
 
-
-}
-
-def busqueda2[A](array:Array[A], elemento : A, indiceInf:Int, indiceSup:Int mayor:(A,A) => Boolean) : Int = {
-
-  @annotation.tailrec
-  def Buscar(array2:Array[A],indice :Int) : Int = {
-    if(array2.length == 0 )
-      return -1
-
-    var tam = 0
-    if(array2.length == 2)
-    {
-      tam = (array2.length/2)-1
-    }
-    else
-      tam = array2.length/2
-
-    var arrayRes:ArrayA] = new Array[A](tam)
-    var mitad : A = array2(tam)
-
-
-
-    println("Elemento es: " + elemento + " y mitad vale: " + mitad)
-
-    if(mayor(elemento,mitad) && array2.length == 1)
-      return -1
-
-    if(mitad == elemento)
-      (indice/2)
-    else if (mayor(elemento,mitad)){
-      for (i <- ((array2.length)/2) until  (array2.length)){
-        arrayRes += array2(i)
-
-      }
-
-      Buscar(arrayRes,indice + tam)
-    }else{
-      for (i <- 0 until ((array2.length/2))){
-
-        arrayRes += array2(i)
-
-      }
-      Buscar(arrayRes,indice - tam)
-    }
-
-
-  }
-
-  Buscar(array,array.length)
 }
 
 
-}
+
+
+
