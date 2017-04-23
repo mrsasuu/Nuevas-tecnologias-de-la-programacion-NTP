@@ -51,13 +51,19 @@ object Main {
   /**
     * Ejercicio 1: funcion para generar el triangulo de Pascal
     *
-    * @param columna
-    * @param fila
-    * @return
+    * @param columna número entero que indicará que columna se desea calcular.
+    * @param fila número entero que indicará que fila se desea calcular.
+    * @return el valor correspondiente a la fila y la columna de la pirámide de Pascal
     */
 
   //@annotation.tailrec
   def calcularValorTrianguloPascal(columna: Int, fila: Int): Int = {
+    /**
+      * Si nos encontramos en los extremos de la fila o en la 1 columna nos encontraremos en el caso base, y por tanto
+      * equivaldrá a 1.
+      *
+      * Sino llamaremos a la misma función con una fila y una columna menos más el valor de la fila anterior.
+      */
     if(fila == 0 || fila == columna || columna == 0)
       1
     else
@@ -72,7 +78,6 @@ object Main {
     */
   def chequearBalance(cadena: List[Char]): Boolean = {
 
-    @annotation.tailrec
     /**
       *
       * La función servira como apoyo al metodo chequearBalance para contar el numero de parentesis abiertos y cerrados que hay
@@ -82,18 +87,31 @@ object Main {
       * @return devuelve 0 cuando la cadena no tiene mas parentesis, devuelve 1 si el parentesis es ( y devuelve -1 si es )
       *         si no queda ningun parentesis y solo otros caracteres se devuelve 0
       */
+    @annotation.tailrec
      def comprobarParentesis(cadena: List[Char],indiceFun : Int): Int ={
        var indice = 0
        var condicion = true
        var cadena2 = cadena
 
+      /**
+        * Si el balance de paréntesis es negativo quiere decir que está mal construida la expresión, así que terminamos la función
+        */
        if(indiceFun <0)
          return -1
 
+      /**
+        * Si la cadena está vacia quiere decir que no quedan elementos que analizar y por tanto este segmento está balanceado y devolvemos 0.
+        *
+        * Si no está vacia tenemos que ir filtrando todos los caracteres hasta encontrar el próximo ( o ).
+        */
        if(cadena.isEmpty)
          0
        else{
          while(condicion && !cadena2.isEmpty){
+           /**
+             * Si nos encontramos un ( sumamos 1 al contador de paréntesis y paramos el bucle.
+             * Si encontramos un ) restamos 1 al contador de paréntesis y paramos el bucle.
+             */
            if(cadena2(0) == '('){
              indice += 1
              condicion = false
@@ -102,14 +120,22 @@ object Main {
              condicion = false
            }
            print(cadena2(0))
+           /**
+             * Por cada elemento que encontremos sea (, ) o cualquier otro valor lo quitamos de la cabeza de la lista ya que ha sido analizado.
+             */
            cadena2 = cadena2.tail
 
          }
-
+         /**
+           * Una vez hemos analizado el paréntesis volveremos a llamar a la función con la nueva lista y los índices actualizados.
+           */
          comprobarParentesis(cadena2,indice+indiceFun)
        }
      }
 
+    /**
+      * Si el resultado es 0 quiere decir que está balanceado, sino en cualquier otro caso (mal formado o no balanceado) devolveremos false.
+      */
     if(comprobarParentesis(cadena,0) == 0)
       true
     else
