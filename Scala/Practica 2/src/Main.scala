@@ -1,3 +1,5 @@
+import scala.collection.mutable.ArrayBuffer
+import scala.reflect.ClassTag
 
 /**
   * Objeto singleton para probar la funcionalidad del triangulo
@@ -36,6 +38,14 @@ object Main {
 
     if(!chequearBalance(listaIncorrecta))
       println("La lista 2 es incorrecta")
+
+    var array1:Array[Int] = Array(1, 5, 20, 35, 57, 98, 123, 215)
+    println(ordenado(array1, (x:Int,y:Int) => (x < y)))
+
+    import scala.collection.mutable.ArrayBuffer
+
+    var array2:ArrayBuffer[Int] = ArrayBuffer(1,4, 5, 20, 35, 57, 98, 123, 215)
+    println(busqueda(array2,1,(x:Int,y:Int) => (x > y)))
   }
 
   /**
@@ -121,4 +131,122 @@ object Main {
   def contarCambiosPosibles(cantidad: Int, monedas: List[Int]): Int = {
      // A rellenar
   }*/
+
+  def ordenado[A](array:Array[A], comparar:(A,A) => Boolean) : Boolean = {
+    @annotation.tailrec
+    def iterar(indice:Int) : Boolean = {
+      if(indice == array.length-2)
+        comparar(array(indice),array(indice+1))
+      else if(!comparar(array(indice), array(indice+1)))
+        false
+      else
+        iterar(indice+1)
+
+    }
+
+    iterar(0)
+  }
+  import scala.collection.mutable.ArrayBuffer
+  def busqueda[A:ClassTag](array:ArrayBuffer[A], elemento : A, mayor:(A,A) => Boolean) : Int = {
+
+    @annotation.tailrec
+    def Buscar(array2:ArrayBuffer[A],indice :Int) : Int = {
+      if(array2.length == 0 )
+        return -1
+
+      var tam = 0
+      if(array2.length == 2)
+      {
+        tam = (array2.length/2)-1
+      }
+      else
+        tam = array2.length/2
+
+      var arrayRes:ArrayBuffer[A] = new ArrayBuffer[A](tam)
+      var mitad : A = array2(tam)
+
+
+
+      println("Elemento es: " + elemento + " y mitad vale: " + mitad)
+
+      if(mayor(elemento,mitad) && array2.length == 1)
+        return -1
+
+      if(mitad == elemento)
+        (indice/2)
+      else if (mayor(elemento,mitad)){
+        for (i <- ((array2.length)/2) until  (array2.length)){
+          arrayRes += array2(i)
+
+        }
+
+        Buscar(arrayRes,indice + tam)
+      }else{
+        for (i <- 0 until ((array2.length/2))){
+
+          arrayRes += array2(i)
+
+        }
+        Buscar(arrayRes,indice - tam)
+      }
+
+
+    }
+
+    Buscar(array,array.length)
+  }
+
+
+}
+
+def busqueda2[A](array:Array[A], elemento : A, indiceInf:Int, indiceSup:Int mayor:(A,A) => Boolean) : Int = {
+
+  @annotation.tailrec
+  def Buscar(array2:Array[A],indice :Int) : Int = {
+    if(array2.length == 0 )
+      return -1
+
+    var tam = 0
+    if(array2.length == 2)
+    {
+      tam = (array2.length/2)-1
+    }
+    else
+      tam = array2.length/2
+
+    var arrayRes:ArrayA] = new Array[A](tam)
+    var mitad : A = array2(tam)
+
+
+
+    println("Elemento es: " + elemento + " y mitad vale: " + mitad)
+
+    if(mayor(elemento,mitad) && array2.length == 1)
+      return -1
+
+    if(mitad == elemento)
+      (indice/2)
+    else if (mayor(elemento,mitad)){
+      for (i <- ((array2.length)/2) until  (array2.length)){
+        arrayRes += array2(i)
+
+      }
+
+      Buscar(arrayRes,indice + tam)
+    }else{
+      for (i <- 0 until ((array2.length/2))){
+
+        arrayRes += array2(i)
+
+      }
+      Buscar(arrayRes,indice - tam)
+    }
+
+
+  }
+
+  Buscar(array,array.length)
+}
+
+
 }
