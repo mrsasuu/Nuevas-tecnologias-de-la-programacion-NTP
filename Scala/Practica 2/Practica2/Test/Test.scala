@@ -28,7 +28,10 @@ class Test extends TestCase{
   }
 
   def testContarCambiosPosibles ={
-    assert(true)
+    val monedas = List(1,2,3)
+    val dinero = 6
+
+    println("Hay " + contarCambiosPosibles(dinero,monedas) + " maneras de devolver " + dinero)
   }
 
   def testBusqueda ={

@@ -120,7 +120,7 @@ object Main {
              indice -= 1
              condicion = false
            }
-           print(cadena2(0))
+           //print(cadena2(0))
            /**
              * Por cada elemento que encontremos sea (, ) o cualquier otro valor lo quitamos de la cabeza de la lista ya que ha sido analizado.
              */
