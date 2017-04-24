@@ -1,7 +1,3 @@
-import scala.annotation.tailrec
-import scala.collection.mutable.ArrayBuffer
-import scala.reflect.ClassTag
-
 /**
   * Objeto singleton para probar la funcionalidad del triangulo
   * de Pascal
