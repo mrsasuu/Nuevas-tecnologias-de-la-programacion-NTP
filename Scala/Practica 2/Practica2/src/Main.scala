@@ -1,4 +1,6 @@
 /**
+  * Created by Antonio Javier Benítez Guijarro.
+  *
   * Objeto singleton para probar la funcionalidad del triangulo
   * de Pascal
   */
@@ -133,7 +135,6 @@ object Main {
          comprobarParentesis(cadena2,indice+indiceFun)
        }
      }
-
     /**
       * Si el resultado es 0 quiere decir que está balanceado, sino en cualquier otro caso (mal formado o no balanceado) devolveremos false.
       */
