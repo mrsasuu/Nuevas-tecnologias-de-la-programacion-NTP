@@ -1,34 +1,38 @@
 
+import junit.framework.TestCase
 import org.junit.runner.RunWith
 import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
 
+import Conjunto._
+/*
 import Conjunto.interseccion
 import Conjunto.union
 import Conjunto.diferencia
 import Conjunto.filtrar
 import Conjunto.existe
-import Conjunto.paraTodo
+import Conjunto.paraTodo*/
 
 @RunWith(classOf[JUnitRunner])
-class ConjuntoSuite extends FunSuite {
+class ConjuntoSuite extends TestCase {
 
   // Se importan las declaraciones  en ConjuntoFuncional
-  _
 
 
+/*
   // Se crea un trait incluyendo tres conjuntos, que se
   // usan en cada test
   trait TestSets {
     val s1 = conjuntoUnElemento(1)
     val s2 = conjuntoUnElemento(2)
     val s3 = conjuntoUnElemento(3)
-  }
+  }*/
 
+  /*
   /**
     * Se comprueba que el elemento 1 esta contenido en s1
     */
-  test("s1 contiene 1") {
+  def testContiene1() = {
 
     // Se crea instancia de los conjuntos
     new TestSets {
@@ -36,29 +40,34 @@ class ConjuntoSuite extends FunSuite {
       // que aparece como segundo argumento
       assert(s1(1), "fallo: s1 no contiene a 1")
     }
-  }
-
+  }*/
+/*
   /**
     * Test for union
     */
-  test("test de union") {
+  def testUnion() = {
     new TestSets {
       val s = union(s1, s2)
       assert(s(1), "fallo: s no contiene a 1")
       assert(s(2), "fallo: s no contiene a 2")
       assert(!s(3), "fallo: s contiene a 3")
     }
+  }*/
+
+  def testConstruccion()={
+
+    
   }
 
   /**
     * Otro test para la union
     */
-  test("Test de union (general)") {
+  def testUnionGeneral() = {
     val conjunto1 = Conjunto((x: Int) => x > 3)
     val conjunto2 = Conjunto((x: Int) => x > 5)
 
     // Conjunto union: enteros mayores de 3
-    val conjuntoUnion:Conjunto = Conjunto.union(conjunto1, conjunto2)
+    val conjuntoUnion: Conjunto = Conjunto.union(conjunto1, conjunto2)
 
     // 4, 5, 6 y 7  pertenecen a la union
     assert(conjuntoUnion(4))
@@ -70,10 +79,10 @@ class ConjuntoSuite extends FunSuite {
     assert(!conjuntoUnion(3))
     assert(!conjuntoUnion(0))
   }
+}
 
-
-
-  test("Test de interseccion") {
+/*
+  def testInterseccion() ={
     val conjunto1 = Conjunto((x: Int) => x > 3)
     val conjunto2 = Conjunto((x: Int) => x > 5)
 
@@ -86,11 +95,11 @@ class ConjuntoSuite extends FunSuite {
     // no 4 ni 5 pertenecen
     assert(!conjuntoInterseccion(4))
     assert(!conjuntoInterseccion(5))
-  }
+  }*/
 
 
-
-  test("Test de diferencia") {
+/*
+  def testDiferencia() ={
     val conjunto1 = Conjunto((x: Int) => x > 3)
     val conjunto2 = Conjunto((x: Int) => x < 10)
 
@@ -100,12 +109,12 @@ class ConjuntoSuite extends FunSuite {
     // 6 no pertenece y 11 si
     assert(!conjuntoDiferencia(6))
     assert(conjuntoDiferencia(11))
-  }
-
+  }*/
+/*
   /**
     * Test de filtrado
     */
-  test("Test de filtrado") {
+  def testFiltrado() ={
     val conjunto1 = Conjunto((x: Int) => x > 3)
     val conjunto2 = Conjunto((x: Int) => x < 10)
 
@@ -115,11 +124,11 @@ class ConjuntoSuite extends FunSuite {
     // 6 debe pertenecer y 11 no
     assert(conjuntoFiltrado(6))
     assert(!conjuntoFiltrado(11))
-  }
+  }*/
 
 
-
-  test("Test de paraTodo") {
+/*
+  def testParatodo() ={
     val conjunto = Conjunto((x: Int) => x < 10)
 
     // No todos los elementos del conjunto son > 0
@@ -128,10 +137,10 @@ class ConjuntoSuite extends FunSuite {
     // Si que todos son menores de 15
     assert(paraTodo(conjunto, x => x < 15))
   }
+*/
 
-
-
-  test("Test para existe") {
+/*
+  def testExiste() ={
     val conjunto = Conjunto((x: Int) => x < 10)
 
     // No existe en el conjunto ningun elemento mayor de 10
@@ -144,7 +153,7 @@ class ConjuntoSuite extends FunSuite {
   /**
     * Test de map
     */
-  test("Test de map") {
+  /*def testMap() ={
     // Definicion del conjunto
     val conjunto = Conjunto((x: Int) => x < 10)
 
@@ -159,6 +168,6 @@ class ConjuntoSuite extends FunSuite {
     // 125 no pertenece, porque 100 no esa en el conjunto
     // de partida
     assert(!resultado(125))
-  }
+  }*/
 
 }

@@ -33,7 +33,6 @@ class Conjunto(val funcionCaracteristica: Int => Boolean) {
     funcionCaracteristica(elemento)
   }
 
-  //def union(conjunto1: Conjunto, conjunto2: Conjunto) = ???
 }
 
 
@@ -52,7 +51,19 @@ object Conjunto {
 
   def existe(conjunto: Conjunto, function: (Nothing) => Any) = ???
 
-  def paraTodo(conjunto: Conjunto, function: (Nothing) => Any) = ???
+  def paraTodo(conjunto: Conjunto, function: (Nothing) => Any) : Boolean = {
+    def paraTodo(conjunto : Conjunto, predicado : Int => Boolean) : Boolean = {
+      def iterar(elemento : Int) : Boolean = {
+        if(???) ???
+        else if (???) ???
+        else predicado(elemento) && iterar(???)
+      }
+      iterar(-LIMITE)
+    }
+
+
+    false
+  }
 
 
 
