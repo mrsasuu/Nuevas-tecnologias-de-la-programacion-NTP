@@ -41,13 +41,21 @@ class Conjunto(val funcionCaracteristica: Int => Boolean) {
   * conjuntos
   */
 object Conjunto {
-  def union(conjunto1: Conjunto, conjunto2: Conjunto) = ???
+  def union(conjunto1: Conjunto, conjunto2: Conjunto) : Conjunto ={
+    Conjunto((x:Int) => conjunto1(x)||conjunto2(x))
+  }
 
-  def interseccion(conjunto1: Conjunto, conjunto2: Conjunto) = ???
+  def interseccion(conjunto1: Conjunto, conjunto2: Conjunto) : Conjunto ={
+    Conjunto((x:Int) => conjunto1(x)&&conjunto2(x))
+  }
 
-  def diferencia(conjunto1: Conjunto, conjunto2: Conjunto) = ???
+  def diferencia(conjunto1: Conjunto, conjunto2: Conjunto): Conjunto ={
+    Conjunto((x:Int) => (conjunto1(x))&&(!conjunto2(x)))
+  }
 
-  def filtrar(c : Conjunto, predicado : Int => Boolean) = ???
+  def filtrar(c : Conjunto, predicado : Int => Boolean) : Conjunto ={
+    Conjunto((x:Int) => (c(x))&&(predicado(x)))
+  }
 
   def existe(conjunto: Conjunto, function: (Nothing) => Any) = ???
 

@@ -13,13 +13,12 @@ import Conjunto.filtrar
 import Conjunto.existe
 import Conjunto.paraTodo*/
 
-@RunWith(classOf[JUnitRunner])
 class ConjuntoSuite extends TestCase {
 
   // Se importan las declaraciones  en ConjuntoFuncional
 
 
-/*
+  /*
   // Se crea un trait incluyendo tres conjuntos, que se
   // usan en cada test
   trait TestSets {
@@ -41,7 +40,7 @@ class ConjuntoSuite extends TestCase {
       assert(s1(1), "fallo: s1 no contiene a 1")
     }
   }*/
-/*
+  /*
   /**
     * Test for union
     */
@@ -54,9 +53,12 @@ class ConjuntoSuite extends TestCase {
     }
   }*/
 
-  def testConstruccion()={
+  def testConstruccion() = {
+    val conjunto1 = Conjunto((x: Int) => x > 3)
 
-    
+    println(conjunto1(4))
+    println(conjunto1(1))
+
   }
 
   /**
@@ -79,10 +81,9 @@ class ConjuntoSuite extends TestCase {
     assert(!conjuntoUnion(3))
     assert(!conjuntoUnion(0))
   }
-}
 
-/*
-  def testInterseccion() ={
+
+  def testInterseccion() = {
     val conjunto1 = Conjunto((x: Int) => x > 3)
     val conjunto2 = Conjunto((x: Int) => x > 5)
 
@@ -95,11 +96,10 @@ class ConjuntoSuite extends TestCase {
     // no 4 ni 5 pertenecen
     assert(!conjuntoInterseccion(4))
     assert(!conjuntoInterseccion(5))
-  }*/
+  }
 
 
-/*
-  def testDiferencia() ={
+  def testDiferencia() = {
     val conjunto1 = Conjunto((x: Int) => x > 3)
     val conjunto2 = Conjunto((x: Int) => x < 10)
 
@@ -109,12 +109,12 @@ class ConjuntoSuite extends TestCase {
     // 6 no pertenece y 11 si
     assert(!conjuntoDiferencia(6))
     assert(conjuntoDiferencia(11))
-  }*/
-/*
+  }
+
   /**
     * Test de filtrado
     */
-  def testFiltrado() ={
+  def testFiltrado() = {
     val conjunto1 = Conjunto((x: Int) => x > 3)
     val conjunto2 = Conjunto((x: Int) => x < 10)
 
@@ -124,7 +124,8 @@ class ConjuntoSuite extends TestCase {
     // 6 debe pertenecer y 11 no
     assert(conjuntoFiltrado(6))
     assert(!conjuntoFiltrado(11))
-  }*/
+  }
+}
 
 
 /*
@@ -148,7 +149,7 @@ class ConjuntoSuite extends TestCase {
 
     // Si existe en el conjunto algun elemento menor de 15
     assert(existe(conjunto, x => x < 15))
-  }
+  }*/
 
   /**
     * Test de map
@@ -170,4 +171,4 @@ class ConjuntoSuite extends TestCase {
     assert(!resultado(125))
   }*/
 
-}
+
