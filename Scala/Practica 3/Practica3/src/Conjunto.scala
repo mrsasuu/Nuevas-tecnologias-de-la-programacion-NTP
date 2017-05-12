@@ -57,21 +57,44 @@ object Conjunto {
     Conjunto((x:Int) => (c(x))&&(predicado(x)))
   }
 
-  def existe(conjunto: Conjunto, function: (Nothing) => Any) = ???
+  def existe(c : Conjunto, predicado : Int => Boolean) : Boolean ={
+    def iterar(elemento : Int) : Boolean = {
+      if( c(elemento) && predicado(elemento) ){
+        true
+      }
+      else if( elemento > Conjunto.LIMITE){
+        false
+      }
+      else{
+        iterar(elemento+1)
+      }
+    }
+    iterar(-LIMITE)
 
-  def paraTodo(conjunto: Conjunto, function: (Nothing) => Any) : Boolean = {
+  }
+
+
     def paraTodo(conjunto : Conjunto, predicado : Int => Boolean) : Boolean = {
       def iterar(elemento : Int) : Boolean = {
-        if(???) ???
-        else if (???) ???
-        else predicado(elemento) && iterar(???)
+        if( elemento > Conjunto.LIMITE){
+          true
+        }
+        else if (!conjunto(elemento)){
+          iterar(elemento+1)
+        }
+        else{
+          predicado(elemento) && iterar(elemento+1)
+        }
       }
+
       iterar(-LIMITE)
     }
 
 
-    false
+  def map(c : Conjunto, funcion : Int => Int) : Conjunto ={
+    Conjunto((((x:Int) => x + 25):Int) => c(x))
   }
+
 
 
 

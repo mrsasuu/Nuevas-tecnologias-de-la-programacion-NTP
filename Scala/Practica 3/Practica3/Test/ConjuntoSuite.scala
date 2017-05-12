@@ -125,11 +125,9 @@ class ConjuntoSuite extends TestCase {
     assert(conjuntoFiltrado(6))
     assert(!conjuntoFiltrado(11))
   }
-}
 
 
-/*
-  def testParatodo() ={
+  def testParatodo() = {
     val conjunto = Conjunto((x: Int) => x < 10)
 
     // No todos los elementos del conjunto son > 0
@@ -138,10 +136,9 @@ class ConjuntoSuite extends TestCase {
     // Si que todos son menores de 15
     assert(paraTodo(conjunto, x => x < 15))
   }
-*/
 
-/*
-  def testExiste() ={
+
+  def testExiste() = {
     val conjunto = Conjunto((x: Int) => x < 10)
 
     // No existe en el conjunto ningun elemento mayor de 10
@@ -149,12 +146,13 @@ class ConjuntoSuite extends TestCase {
 
     // Si existe en el conjunto algun elemento menor de 15
     assert(existe(conjunto, x => x < 15))
-  }*/
+  }
+
 
   /**
     * Test de map
     */
-  /*def testMap() ={
+  def testMap() = {
     // Definicion del conjunto
     val conjunto = Conjunto((x: Int) => x < 10)
 
@@ -169,6 +167,6 @@ class ConjuntoSuite extends TestCase {
     // 125 no pertenece, porque 100 no esa en el conjunto
     // de partida
     assert(!resultado(125))
-  }*/
-
+  }
+}
 
