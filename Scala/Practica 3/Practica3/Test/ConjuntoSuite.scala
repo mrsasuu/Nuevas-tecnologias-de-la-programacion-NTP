@@ -14,20 +14,17 @@ class ConjuntoSuite extends TestCase {
 
   // Se crea un trait incluyendo tres conjuntos, que se
   // usan en cada test
+  /**
+    * No he llegado a usarlo ya que no se ejecutaban los test que llevaban el new TestSets por una razón que desconozco.
+    */
   trait TestSets {
     val s1 = conjuntoUnElemento(1)
     val s2 = conjuntoUnElemento(2)
     val s3 = conjuntoUnElemento(3)
   }
 
-
   /**
-    * Se comprueba que el elemento 1 esta contenido en s1
-    */
-
-
-  /**
-    * Test for union
+    * Test para comprobar la funcionalidad de la unión sobre conjuntos de un solo elemento.
     */
   def testUnion() = {
 
@@ -50,20 +47,27 @@ class ConjuntoSuite extends TestCase {
     }*/
   }
 
+  /**
+    * Test para comprobar que forma correctamente un conjunto.
+    */
   def testConstruccion() = {
     val conjunto1 = Conjunto((x: Int) => x > 3)
 
-    println(conjunto1(4))
-    println(conjunto1(1))
+    assert(conjunto1(4))
+    assert(conjunto1(1))
 
 
   }
 
+  /**
+    * Test para comprobar que los conjuntos de un elemento solo contienen a un único elemento.
+    */
   def testContieneUno() = {
 
     val s1 = conjuntoUnElemento(1)
 
     assert(s1(1), "fallo: s1 no contiene a 1")
+    assert(!s1(2), "fallo: s1 contiene a 2")
     /*
         // Se crea instancia de los conjuntos
         new TestSets {
@@ -74,7 +78,7 @@ class ConjuntoSuite extends TestCase {
   }
 
   /**
-    * Otro test para la union
+    * Test para comprobar la unión entre conjuntos de más de un elemento.
     */
   def testUnionGeneral() = {
     val conjunto1 = Conjunto((x: Int) => x > 3)
@@ -95,7 +99,9 @@ class ConjuntoSuite extends TestCase {
     assert(!conjuntoUnion(0))
   }
 
-
+  /**
+    * Test para comprobar la intersección entre conjuntos de más de un elemento.
+    */
   def testInterseccion() = {
     val conjunto1 = Conjunto((x: Int) => x > 3)
     val conjunto2 = Conjunto((x: Int) => x > 5)
@@ -111,7 +117,9 @@ class ConjuntoSuite extends TestCase {
     assert(!conjuntoInterseccion(5))
   }
 
-
+  /**
+    * Test para comprobar la diferencia entre conjuntos de más de un elemento.
+    */
   def testDiferencia() = {
     val conjunto1 = Conjunto((x: Int) => x > 3)
     val conjunto2 = Conjunto((x: Int) => x < 10)
@@ -125,7 +133,7 @@ class ConjuntoSuite extends TestCase {
   }
 
   /**
-    * Test de filtrado
+    * Test para comprobar el filtrado de un conjunto de más de un elemento con una función de filtrado.
     */
   def testFiltrado() = {
     val conjunto1 = Conjunto((x: Int) => x > 3)
@@ -139,7 +147,9 @@ class ConjuntoSuite extends TestCase {
     assert(!conjuntoFiltrado(11))
   }
 
-
+  /**
+    * Test para comprobar que un conjunto cumple una determinada función para todos sus elementos dado un predicado.
+    */
   def testParatodo() = {
     val conjunto = Conjunto((x: Int) => x < 10)
 
@@ -150,7 +160,9 @@ class ConjuntoSuite extends TestCase {
     assert(paraTodo(conjunto, x => x < 15))
   }
 
-
+  /**
+    * Test para comprobar que un conjunto cumple una determinada función para al menos un elemento dado un predicado.
+    */
   def testExiste() = {
     val conjunto = Conjunto((x: Int) => x < 10)
 
@@ -163,7 +175,7 @@ class ConjuntoSuite extends TestCase {
 
 
   /**
-    * Test de map
+    * Test para comprobar que se realiza una transformación sobre un conjunto dada una función predicado.
     */
   def testMap() = {
     // Definicion del conjunto
