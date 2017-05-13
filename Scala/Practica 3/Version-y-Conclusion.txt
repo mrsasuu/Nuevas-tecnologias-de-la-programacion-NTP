@@ -1,0 +1,14 @@
+El entorno de desarrollo escogido ha sido IntelliJ IDEA 2016.3.5
+La versión de Scala utilizada ha sido scala-sdk-2.11.6
+Para el desarrollo de los test se ha incluido la librería de com.btmatthews.selenium.junit4:selenium-junit4-runner:1.0.4
+y la librería au.com.dius:pact-jvm-provider-scalatest_2.11:3.3.6
+
+Conclusión de la práctica:
+
+En general la práctica me ha parecido una forma interesante de trabajar con clases, objetos y traits para tener más manejo a partir de la clase de teoría, 
+y a la vez una forma interesante de trabajar sobre conjuntos.
+
+Como conocimientos novedosos podría destacar el trabajo sobre conjuntos ya que aún no había trabajado sobre ellos con ningún lenguaje de programación
+que no fuese wxmaxima.
+
+En general me parece una práctica bien programada y con una duración bastante razonable.
