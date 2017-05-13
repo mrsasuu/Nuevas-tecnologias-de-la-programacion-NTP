@@ -16,21 +16,23 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ConjuntoSuite.scala" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ConjuntoSuite.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Practica3/Test/ConjuntoSuite.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="159" column="47" lean-forward="false" selection-start-line="159" selection-start-column="35" selection-end-line="159" selection-end-column="47" />
-              <folding />
+            <state relative-caret-position="-34">
+              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding>
+                <element signature="e#1#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Conjunto.scala" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Conjunto.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Practica3/src/Conjunto.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="98" column="0" lean-forward="true" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+            <state relative-caret-position="135">
+              <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -62,8 +64,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Practica3/Test/Conjunto.scala" />
-        <option value="$PROJECT_DIR$/Practica3/Test/ConjuntoSuite.scala" />
         <option value="$PROJECT_DIR$/Practica3/src/Conjunto.scala" />
+        <option value="$PROJECT_DIR$/Practica3/Test/ConjuntoSuite.scala" />
       </list>
     </option>
   </component>
@@ -94,9 +96,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -171,6 +170,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -693,44 +695,45 @@
       <workItem from="1494432192567" duration="3679000" />
       <workItem from="1494436587679" duration="3468000" />
       <workItem from="1494521974187" duration="121000" />
-      <workItem from="1494601763107" duration="5591000" />
+      <workItem from="1494601763107" duration="5648000" />
+      <workItem from="1494686672961" duration="1548000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ConjuntoSuite - 2017.05.12 at 17h 54m 55s.xml">
+    <history-entry file="ConjuntoSuite - 2017.05.13 at 17h 01m 07s.xml">
       <configuration name="ConjuntoSuite" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConjuntoSuite - 2017.05.12 at 18h 10m 38s.xml">
+    <history-entry file="ConjuntoSuite - 2017.05.13 at 17h 02m 34s.xml">
       <configuration name="ConjuntoSuite" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConjuntoSuite - 2017.05.12 at 18h 11m 05s.xml">
+    <history-entry file="ConjuntoSuite - 2017.05.13 at 17h 03m 01s.xml">
       <configuration name="ConjuntoSuite" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConjuntoSuite - 2017.05.12 at 18h 11m 12s.xml">
+    <history-entry file="ConjuntoSuite - 2017.05.13 at 17h 03m 20s.xml">
       <configuration name="ConjuntoSuite" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConjuntoSuite - 2017.05.12 at 18h 12m 33s.xml">
+    <history-entry file="ConjuntoSuite - 2017.05.13 at 17h 03m 37s.xml">
       <configuration name="ConjuntoSuite" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConjuntoSuite - 2017.05.12 at 18h 17m 53s.xml">
+    <history-entry file="ConjuntoSuite - 2017.05.13 at 17h 03m 51s.xml">
       <configuration name="ConjuntoSuite" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConjuntoSuite - 2017.05.12 at 18h 19m 31s.xml">
+    <history-entry file="ConjuntoSuite - 2017.05.13 at 17h 05m 01s.xml">
       <configuration name="ConjuntoSuite" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConjuntoSuite - 2017.05.12 at 18h 20m 21s.xml">
+    <history-entry file="ConjuntoSuite - 2017.05.13 at 17h 05m 34s.xml">
       <configuration name="ConjuntoSuite" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConjuntoSuite - 2017.05.12 at 18h 22m 50s.xml">
+    <history-entry file="ConjuntoSuite - 2017.05.13 at 17h 05m 45s.xml">
       <configuration name="ConjuntoSuite" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConjuntoSuite - 2017.05.12 at 18h 23m 28s.xml">
+    <history-entry file="ConjuntoSuite - 2017.05.13 at 17h 06m 06s.xml">
       <configuration name="ConjuntoSuite" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12859000" />
+    <option name="totallyTimeSpent" value="14464000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -746,12 +749,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25718608" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26096824" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -784,9 +787,11 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Practica3/Test/ConjuntoSuite.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2074">
-          <caret line="127" column="1" lean-forward="false" selection-start-line="127" selection-start-column="1" selection-end-line="127" selection-end-column="1" />
-          <folding />
+        <state relative-caret-position="2703">
+          <caret line="159" column="47" lean-forward="false" selection-start-line="159" selection-start-column="35" selection-end-line="159" selection-end-column="47" />
+          <folding>
+            <element signature="e#1#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -804,7 +809,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2074">
           <caret line="127" column="1" lean-forward="false" selection-start-line="127" selection-start-column="1" selection-end-line="127" selection-end-column="1" />
-          <folding />
+          <folding>
+            <element signature="e#1#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Practica3/src/Conjunto.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Practica3/Test/ConjuntoSuite.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2074">
+          <caret line="127" column="1" lean-forward="false" selection-start-line="127" selection-start-column="1" selection-end-line="127" selection-end-column="1" />
+          <folding>
+            <element signature="e#1#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -822,7 +849,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -846,20 +875,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Practica3/Test/ConjuntoSuite.scala">
+    <entry file="file://$PROJECT_DIR$/Practica3/src/Conjunto.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="159" column="47" lean-forward="false" selection-start-line="159" selection-start-column="35" selection-end-line="159" selection-end-column="47" />
-          <folding />
+        <state relative-caret-position="135">
+          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Practica3/src/Conjunto.scala">
+    <entry file="file://$PROJECT_DIR$/Practica3/Test/ConjuntoSuite.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="98" column="0" lean-forward="true" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+        <state relative-caret-position="-34">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#1#32#0" expanded="true" />
           </folding>
         </state>
       </provider>

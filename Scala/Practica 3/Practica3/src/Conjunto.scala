@@ -41,6 +41,12 @@ class Conjunto(val funcionCaracteristica: Int => Boolean) {
   * conjuntos
   */
 object Conjunto {
+
+  def conjuntoUnElemento(elemto : Int) : Conjunto ={
+
+    Conjunto((x:Int) => x == elemto)
+  }
+
   def union(conjunto1: Conjunto, conjunto2: Conjunto) : Conjunto ={
     Conjunto((x:Int) => conjunto1(x)||conjunto2(x))
   }
@@ -92,7 +98,7 @@ object Conjunto {
 
 
   def map(c : Conjunto, funcion : Int => Int) : Conjunto ={
-    Conjunto((((x:Int) => x + 25):Int) => c(x))
+    Conjunto((x : Int) => existe(c, (y:Int) => funcion(y) == x))
   }
 
 

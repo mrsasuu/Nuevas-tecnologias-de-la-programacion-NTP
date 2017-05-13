@@ -5,53 +5,50 @@ import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
 
 import Conjunto._
-/*
-import Conjunto.interseccion
-import Conjunto.union
-import Conjunto.diferencia
-import Conjunto.filtrar
-import Conjunto.existe
-import Conjunto.paraTodo*/
+
 
 class ConjuntoSuite extends TestCase {
 
-  // Se importan las declaraciones  en ConjuntoFuncional
 
 
-  /*
+
   // Se crea un trait incluyendo tres conjuntos, que se
   // usan en cada test
   trait TestSets {
     val s1 = conjuntoUnElemento(1)
     val s2 = conjuntoUnElemento(2)
     val s3 = conjuntoUnElemento(3)
-  }*/
+  }
 
-  /*
+
   /**
     * Se comprueba que el elemento 1 esta contenido en s1
     */
-  def testContiene1() = {
 
-    // Se crea instancia de los conjuntos
-    new TestSets {
-      // Si falla el assert se muestra el mensaje de error
-      // que aparece como segundo argumento
-      assert(s1(1), "fallo: s1 no contiene a 1")
-    }
-  }*/
-  /*
+
   /**
     * Test for union
     */
   def testUnion() = {
+
+    val s1 = conjuntoUnElemento(1)
+    val s2 = conjuntoUnElemento(2)
+    val s3 = conjuntoUnElemento(3)
+
+
+    val s = union(s1, s2)
+    assert(s(1), "fallo: s no contiene a 1")
+    assert(s(2), "fallo: s no contiene a 2")
+    assert(!s(3), "fallo: s contiene a 3")
+
+    /*
     new TestSets {
       val s = union(s1, s2)
       assert(s(1), "fallo: s no contiene a 1")
       assert(s(2), "fallo: s no contiene a 2")
       assert(!s(3), "fallo: s contiene a 3")
-    }
-  }*/
+    }*/
+  }
 
   def testConstruccion() = {
     val conjunto1 = Conjunto((x: Int) => x > 3)
@@ -59,6 +56,21 @@ class ConjuntoSuite extends TestCase {
     println(conjunto1(4))
     println(conjunto1(1))
 
+
+  }
+
+  def testContieneUno() = {
+
+    val s1 = conjuntoUnElemento(1)
+
+    assert(s1(1), "fallo: s1 no contiene a 1")
+    /*
+        // Se crea instancia de los conjuntos
+        new TestSets {
+          // Si falla el assert se muestra el mensaje de error
+          // que aparece como segundo argumento
+          assert(s1(1), "fallo: s1 no contiene a 1")
+        }*/
   }
 
   /**
@@ -67,6 +79,7 @@ class ConjuntoSuite extends TestCase {
   def testUnionGeneral() = {
     val conjunto1 = Conjunto((x: Int) => x > 3)
     val conjunto2 = Conjunto((x: Int) => x > 5)
+
 
     // Conjunto union: enteros mayores de 3
     val conjuntoUnion: Conjunto = Conjunto.union(conjunto1, conjunto2)
