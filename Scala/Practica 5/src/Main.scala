@@ -155,6 +155,28 @@ object Main extends App{
    val mensajeSecretoFrances: List[Int] = List(0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1,
    0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1)
 
+  def decodificar( mensajeSecreto : List[Int],raiz : Nodo ) : List[Char] ={
+    def aux( mensajeSecreto: List[Int],nodo: Nodo): List[Char] ={
+      nodo match {
+        case NodoHoja(letra, _) =>
+          if (mensajeSecreto.length == 0) {
+            List(letra)
+          }else{
+            letra :: aux(mensajeSecreto,raiz)
+          }
+        case NodoInterno(nodoIzquierda, nodoDerecha, _, _) =>
+          if (mensajeSecreto.head == 0) {
+            aux(mensajeSecreto.tail,nodoIzquierda )              
+          }
+          else {
+            aux(mensajeSecreto.tail, nodoDerecha)
+          }
+      }
+    }
+
+    aux(mensajeSecreto,raiz) // comienza desde la raiz con el texto codificado completo
+  }
+
   type TablaCodigo = List[(Char, List[Int])]
 
   def convertirArbolTabla(arbolCodificacion: Nodo) : TablaCodigo = {
