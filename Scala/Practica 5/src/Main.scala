@@ -174,7 +174,7 @@ object Main extends App{
       }
     }
 
-    aux(mensajeSecreto,raiz) // comienza desde la raiz con el texto codificado completo
+    aux(mensajeSecreto,raiz)
   }
 
   type TablaCodigo = List[(Char, List[Int])]
@@ -193,15 +193,22 @@ object Main extends App{
   }
 
   def codificarConTabla(tabla : TablaCodigo)(caracter : Char) : List[Int] ={
+    val result = tabla.filter(entrada => entrada._1 == caracter).head._2
 
-
+    result
   }
 
-  def codificacionRapida(arbol: Nodo)(texto: List[Char]): List[Int] = {
-    val tablaCodigo = convertirArbolTabla(arbol)                            // crea la tabla a partir del árbol
-    (for(caracter <- texto) yield codificarConTabla(tablaCodigo)(caracter)) // obtiene lista para cada caracter del texto
-      .flatten                                                              // convierte el List[List[Int]] a List[Int]
+  def rapidoDeDecodificacion(arbolCodificacion: Nodo,textoCodificar: List[Char]): List[Int] = {
+    val tablaCodigo = convertirArbolTabla(arbolCodificacion)                            // crea la tabla a partir del árbol
+
+    var resultado = List[Int]
+
+    textoCodificar.foreach(elemento => resultado :: codificarConTabla(tablaCodigo)(elemento))
+
+    resultado
   }
+
+
 
 
 
