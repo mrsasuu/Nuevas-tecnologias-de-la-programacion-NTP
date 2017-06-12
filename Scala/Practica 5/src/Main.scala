@@ -101,6 +101,7 @@ object Main extends App{
     * @param listaNodos lista de nodos a combinar
     * @return Lista de nodos combinados y ordenados por frecuencia de aparición.
     */
+  @annotation.tailrec
   def repetir(singleton: List[Nodo] => Boolean, combinar: List[Nodo] => List[Nodo])(listaNodos : List[Nodo]) :List[Nodo]={
     //Si la lista tiene un único elemento ya hemos terminado
     if(singleton(listaNodos)){
