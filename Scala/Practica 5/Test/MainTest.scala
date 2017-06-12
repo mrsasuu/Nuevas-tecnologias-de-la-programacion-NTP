@@ -4,8 +4,15 @@ import Main._
 
 /**
   * Created by mrsas on 12/06/2017.
+  *
+  *
+  * Clase para realizar el testeo de la práctica.
   */
 class MainTest extends TestCase{
+
+  /**
+    * Variables que se reusarán en algunos test.
+    */
   val codigoHuffmanFrances: Nodo = NodoInterno(
     NodoInterno(
       NodoInterno(
@@ -87,6 +94,11 @@ class MainTest extends TestCase{
   val mensajeSecretoFrances: List[Int] = List(0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1,
     0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1)
 
+
+  /**
+    * Test para comprobar la funcionalidad del la función decodificar.
+    * Pasará el test si el mensaje previamente codificado (por el profesor) coincide con el retornado en a función decodificar.
+    */
   def testDecodificarFrances() = {
 
     val mensajeDecodificado: List[Char] = decodificar(mensajeSecretoFrances,codigoHuffmanFrances)
@@ -94,7 +106,10 @@ class MainTest extends TestCase{
     assert("huffmanestcool"== mensajeDecodificado.mkString)
 
   }
-
+  /**
+    * Test para comprobar la funcionalidad del la función rapidoDeDecodificacion.
+    * Pasará el test si el mensaje codificado por la función rapidoDeDecodificación coincide con el mensaje codificado por el profesor.
+    */
   def testRapidoDeDecodificacion() = {
 
     val mensajeDecodificado: List[Char] = decodificar(mensajeSecretoFrances,codigoHuffmanFrances)
@@ -102,7 +117,10 @@ class MainTest extends TestCase{
 
     assert(mensajeSecretoFrances == codificacionTabla)
   }
-
+  /**
+    * Test para comprobar la funcionalidad del la función CrearArbolCodificación.
+    * Pasará el test si el árbol creado por la función CrearArbolCodificacion es identico al creado manualmente.
+    */
   def testCrearArbol() = {
     val arbolOriginal = NodoInterno(
       NodoHoja('a', 8),
@@ -134,6 +152,10 @@ class MainTest extends TestCase{
     assert(arbolOriginal == arbol)
   }
 
+  /**
+    * Test para comprobar la funcionalidad de la función leerFichero, Decodificar y rapidoDeDecodificación en español a partir de un
+    * texto de un archivo en español.
+    */
   def testDecodificarEspan() ={
     val mensajeSecretoEsp = List(0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1,
       0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0,
